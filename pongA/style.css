@@ -1,0 +1,246 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100vh;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(to bottom,black, #001f6c,#0095DD);
+}
+.game-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.player-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 500px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    color: #0095DD;
+    font-weight: bold;
+}
+#player1Name, #player1Score, #player2Name, #player2Score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid #0095DD;
+    border-radius: 20px;
+    color: #0095DD;
+    background: black;
+    font-weight: bold;
+    font-family: monospace;
+}
+#player1Name, #player1Score {
+    margin-right: 250px;
+}
+#player2Name, #player2Score {
+    margin-left: 250px;
+}
+#player1Name, #player2Name {
+    height: 50px;
+    font-size: 30px;
+}
+#player1Score, #player2Score {
+    height: 280px;
+    font-size: 300px;
+}
+@font-face {
+    font-family: 'Boungy Thin';
+    src: url('../fonts/Bouncy-Thin-PERSONAL_USE_ONLY.otf') format('truetype');
+}
+h1 {
+    color: #0095DD;
+    text-align: center;
+    font-size: 75px;
+    font-weight: bold;
+    font-family: 'Boungy Thin', sans-serif;
+    position: absolute;
+    margin-bottom: 700px;
+    z-index: 3;
+    filter: drop-shadow(0 0 2px #000000)
+            drop-shadow(0 0 3px #000000)
+            drop-shadow(0 0 4px #0095dd);
+}
+#pongCanvas {
+    border: 1px solid #fff;
+    border-radius: 10px;
+    cursor: none;
+}
+.game-over-screen {
+    display: none;
+    position: fixed;
+    top: 53%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    width: 25%;
+    height: 20%;
+    background: rgb(98, 98, 98);
+    z-index: 2;
+}
+.game-over-text {
+    font-family: monospace;
+    font-size: 20px;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-align: center;
+}
+#restartButton, #quitButton {
+    margin: 5px 10px 5px 10px;
+    background: #0095DD;
+    width: 90%;
+    height: 90%;
+    color: #fff;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-family: monospace;
+    font-size: 17px;
+    font-weight: bold;
+}
+#settingsButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+}
+#settingsButton img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.5s linear;
+    filter: drop-shadow(0 0 2px #fff)
+            drop-shadow(0 0 3px #fff);
+}
+@keyframes rotation0 {
+    from {transform: rotate(180deg);}
+    to {transform: rotate(0deg);}
+}
+@keyframes rotation180 {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(180deg);}
+}
+#settingsButton img:hover,#settingsButton.active img{
+    filter: drop-shadow(0 0 2px #fff)
+            drop-shadow(0 0 4px #fff)
+            drop-shadow(0 0 3px #0095DD);
+}
+#settingsButton:focus {
+    outline: none;
+}
+#settingsPanel {
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+#settingsPanel .input-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 0 5px 0;
+}
+input[type="color"] {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+input[type="color"]::-webkit-color-swatch{
+    border: 2px solid #000;
+    border-radius: 50%;
+}
+#settingsPanel label {
+    margin-right: 10px;
+}
+#gameMenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, #0095DD,#001f6c,black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding: 20px;
+    text-align: center;
+}
+#gameMenu form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+#gameMenu form .playerForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#gameMenu input[type="text"] {
+    font-family: monospace !important;
+    font-size: 30px;
+    margin: 0 20px;
+    padding: 10px;
+    border: 2px solid #0095DD;
+    background-color: black;
+    color: #0095DD;
+    border-radius: 5px;
+    width: 200px;
+    height: 40px;
+}
+#playButton{
+    font-family: monospace !important;
+    font-size: 60px;
+    padding: 10px 20px;
+    background: black;
+    color: #0095DD;
+    border: 2px solid #0095DD;
+    cursor: pointer;
+    border-radius: 15px;
+    width: 400px;
+    height: 100px;
+}
+.arrow{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    cursor: pointer;
+    filter: drop-shadow(0 0 2px #0095DD)
+            drop-shadow(0 0 4px #000000)
+            drop-shadow(0 0 3px #0095DD);
+}

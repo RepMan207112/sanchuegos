@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pong Game</title>
+    <link rel="shortcut icon" href="../img/favicon_pong.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <h1>PONG</h1>
+    <a href="../index.html"><img src="../img/blue_arrow.png" alt="arrow" class="arrow"></a>
+    <div id="gameMenu">
+        <form id="playerForm">
+            <label for="player1NameInput"></label>
+            <input type="text" id="player1NameInput" name="player1NameInput" placeholder="Player 1" maxlength="12">
+            <div id="middleMenu">
+                <button type="submit" id="playButton">Play</button>
+            </div>
+            <label for="player2NameInput"></label>
+            <input type="text" id="player2NameInput" name="player2NameInput" placeholder="Player 2" maxlength="12">
+        </form>
+    </div>
+    <div class="game-area">
+        <div class="player-info">
+            <div id="player1Name" class="player-name">Player 1</div>
+            <div id="player1Score" class="player-score">0</div>
+        </div>
+
+    <canvas id="pongCanvas" width="800" height="400" style="background-color: #000"></canvas>
+
+        <div class="player-info">
+            <div id="player2Name" class="player-name">Player 2</div>
+            <div id="player2Score" class="player-score">0</div>
+        </div>
+    </div>
+    <div id="gameOverScreen" class="game-over-screen">
+        <div class="game-over-text">
+            <p id="winnerText"></p>
+            <button id="restartButton">Restart Game</button>
+            <a href="../index.html"><button id="quitButton">Quit Game</button></a>
+        </div>
+    </div>
+
+    <button id="settingsButton"><img src="img/settings.png" alt="Settings"></button>
+
+    <div id="settingsPanel" style="display: none;">
+        <div class="input-group">
+            <label for="leftPaddleColor">Player 1 Color:</label>
+            <input type="color" id="leftPaddleColor" name="leftPaddleColor" value="#FF0000">
+        </div>
+        <div class="input-group">
+            <label for="rightPaddleColor">Player 2 Color:</label>
+            <input type="color" id="rightPaddleColor" name="rightPaddleColor" value="#00FF00">
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
